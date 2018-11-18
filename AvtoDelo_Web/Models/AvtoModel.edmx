@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AvtoModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="attributes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+          <Property Name="sort_order" Type="int" />
+        </EntityType>
+        <EntityType Name="category_1lvl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="category_2lvl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+          <Property Name="parent_id" Type="int" />
+        </EntityType>
+        <EntityType Name="category_3lvl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+          <Property Name="parent_id" Type="int" />
+        </EntityType>
+        <EntityType Name="complects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="options">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="sort_order" Type="int" />
+        </EntityType>
+        <EntityType Name="product_image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="sort_order" Type="int" />
+        </EntityType>
+        <EntityType Name="product_to_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+        </EntityType>
+        <EntityType Name="product_to_complect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="complect_id" Type="int" />
+        </EntityType>
+        <EntityType Name="product_to_option">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="option_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="attributes_rus" Type="text" />
+          <Property Name="attributes_eng" Type="text" />
+          <Property Name="date_created" Type="date" />
+          <Property Name="description_rus" Type="text" />
+          <Property Name="description_eng" Type="text" />
+          <Property Name="name_rus" Type="nvarchar" MaxLength="50" />
+          <Property Name="name_eng" Type="nvarchar" MaxLength="50" />
+          <Property Name="complect_group_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_category_2lvl_category_1lvl">
+          <End Role="category_1lvl" Type="Self.category_1lvl" Multiplicity="0..1" />
+          <End Role="category_2lvl" Type="Self.category_2lvl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_1lvl">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category_2lvl">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_3lvl_category_2lvl">
+          <End Role="category_2lvl" Type="Self.category_2lvl" Multiplicity="0..1" />
+          <End Role="category_3lvl" Type="Self.category_3lvl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_2lvl">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category_3lvl">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_image_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_image" Type="Self.product_image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_image">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_category_category_3lvl">
+          <End Role="category_3lvl" Type="Self.category_3lvl" Multiplicity="0..1" />
+          <End Role="product_to_category" Type="Self.product_to_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_3lvl">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_category_products1">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_to_category" Type="Self.product_to_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_category">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_complect_complects">
+          <End Role="complects" Type="Self.complects" Multiplicity="0..1" />
+          <End Role="product_to_complect" Type="Self.product_to_complect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="complects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_complect">
+              <PropertyRef Name="complect_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_complect_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_to_complect" Type="Self.product_to_complect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_complect">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_option_options">
+          <End Role="options" Type="Self.options" Multiplicity="0..1" />
+          <End Role="product_to_option" Type="Self.product_to_option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="options">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_option">
+              <PropertyRef Name="option_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_option_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_to_option" Type="Self.product_to_option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_option">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AvtoModelContainer">
+          <EntitySet Name="attributes" EntityType="Self.attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_1lvl" EntityType="Self.category_1lvl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_2lvl" EntityType="Self.category_2lvl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_3lvl" EntityType="Self.category_3lvl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="complects" EntityType="Self.complects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="options" EntityType="Self.options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_image" EntityType="Self.product_image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_to_category" EntityType="Self.product_to_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_to_complect" EntityType="Self.product_to_complect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_to_option" EntityType="Self.product_to_option" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_category_2lvl_category_1lvl" Association="Self.FK_category_2lvl_category_1lvl">
+            <End Role="category_1lvl" EntitySet="category_1lvl" />
+            <End Role="category_2lvl" EntitySet="category_2lvl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_3lvl_category_2lvl" Association="Self.FK_category_3lvl_category_2lvl">
+            <End Role="category_2lvl" EntitySet="category_2lvl" />
+            <End Role="category_3lvl" EntitySet="category_3lvl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_image_products" Association="Self.FK_product_image_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_image" EntitySet="product_image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_category_category_3lvl" Association="Self.FK_product_to_category_category_3lvl">
+            <End Role="category_3lvl" EntitySet="category_3lvl" />
+            <End Role="product_to_category" EntitySet="product_to_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_category_products1" Association="Self.FK_product_to_category_products1">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_to_category" EntitySet="product_to_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_complect_complects" Association="Self.FK_product_to_complect_complects">
+            <End Role="complects" EntitySet="complects" />
+            <End Role="product_to_complect" EntitySet="product_to_complect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_complect_products" Association="Self.FK_product_to_complect_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_to_complect" EntitySet="product_to_complect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_option_options" Association="Self.FK_product_to_option_options">
+            <End Role="options" EntitySet="options" />
+            <End Role="product_to_option" EntitySet="product_to_option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_option_products" Association="Self.FK_product_to_option_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_to_option" EntitySet="product_to_option" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AvtoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="attributes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sort_order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="category_1lvl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="category_2lvl" Relationship="Self.FK_category_2lvl_category_1lvl" FromRole="category_1lvl" ToRole="category_2lvl" />
+        </EntityType>
+        <EntityType Name="category_2lvl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parent_id" Type="Int32" />
+          <NavigationProperty Name="category_1lvl" Relationship="Self.FK_category_2lvl_category_1lvl" FromRole="category_2lvl" ToRole="category_1lvl" />
+          <NavigationProperty Name="category_3lvl" Relationship="Self.FK_category_3lvl_category_2lvl" FromRole="category_2lvl" ToRole="category_3lvl" />
+        </EntityType>
+        <EntityType Name="category_3lvl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parent_id" Type="Int32" />
+          <NavigationProperty Name="category_2lvl" Relationship="Self.FK_category_3lvl_category_2lvl" FromRole="category_3lvl" ToRole="category_2lvl" />
+          <NavigationProperty Name="product_to_category" Relationship="Self.FK_product_to_category_category_3lvl" FromRole="category_3lvl" ToRole="product_to_category" />
+        </EntityType>
+        <EntityType Name="complects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="product_to_complect" Relationship="Self.FK_product_to_complect_complects" FromRole="complects" ToRole="product_to_complect" />
+        </EntityType>
+        <EntityType Name="options">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sort_order" Type="Int32" />
+          <NavigationProperty Name="product_to_option" Relationship="Self.FK_product_to_option_options" FromRole="options" ToRole="product_to_option" />
+        </EntityType>
+        <EntityType Name="product_image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sort_order" Type="Int32" />
+          <NavigationProperty Name="products" Relationship="Self.FK_product_image_products" FromRole="product_image" ToRole="products" />
+        </EntityType>
+        <EntityType Name="product_to_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <NavigationProperty Name="category_3lvl" Relationship="Self.FK_product_to_category_category_3lvl" FromRole="product_to_category" ToRole="category_3lvl" />
+          <NavigationProperty Name="products" Relationship="Self.FK_product_to_category_products1" FromRole="product_to_category" ToRole="products" />
+        </EntityType>
+        <EntityType Name="product_to_complect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="complect_id" Type="Int32" />
+          <NavigationProperty Name="complects" Relationship="Self.FK_product_to_complect_complects" FromRole="product_to_complect" ToRole="complects" />
+          <NavigationProperty Name="products" Relationship="Self.FK_product_to_complect_products" FromRole="product_to_complect" ToRole="products" />
+        </EntityType>
+        <EntityType Name="product_to_option">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="option_id" Type="Int32" />
+          <Property Name="product_id" Type="Int32" />
+          <NavigationProperty Name="options" Relationship="Self.FK_product_to_option_options" FromRole="product_to_option" ToRole="options" />
+          <NavigationProperty Name="products" Relationship="Self.FK_product_to_option_products" FromRole="product_to_option" ToRole="products" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="attributes_rus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="attributes_eng" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_created" Type="DateTime" Precision="0" />
+          <Property Name="description_rus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description_eng" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="name_rus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="complect_group_id" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+          <NavigationProperty Name="product_image" Relationship="Self.FK_product_image_products" FromRole="products" ToRole="product_image" />
+          <NavigationProperty Name="product_to_category" Relationship="Self.FK_product_to_category_products1" FromRole="products" ToRole="product_to_category" />
+          <NavigationProperty Name="product_to_complect" Relationship="Self.FK_product_to_complect_products" FromRole="products" ToRole="product_to_complect" />
+          <NavigationProperty Name="product_to_option" Relationship="Self.FK_product_to_option_products" FromRole="products" ToRole="product_to_option" />
+        </EntityType>
+        <Association Name="FK_category_2lvl_category_1lvl">
+          <End Role="category_1lvl" Type="Self.category_1lvl" Multiplicity="0..1" />
+          <End Role="category_2lvl" Type="Self.category_2lvl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_1lvl">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category_2lvl">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_3lvl_category_2lvl">
+          <End Role="category_2lvl" Type="Self.category_2lvl" Multiplicity="0..1" />
+          <End Role="category_3lvl" Type="Self.category_3lvl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_2lvl">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category_3lvl">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_category_category_3lvl">
+          <End Role="category_3lvl" Type="Self.category_3lvl" Multiplicity="0..1" />
+          <End Role="product_to_category" Type="Self.product_to_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_3lvl">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_category">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_complect_complects">
+          <End Role="complects" Type="Self.complects" Multiplicity="0..1" />
+          <End Role="product_to_complect" Type="Self.product_to_complect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="complects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_complect">
+              <PropertyRef Name="complect_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_option_options">
+          <End Role="options" Type="Self.options" Multiplicity="0..1" />
+          <End Role="product_to_option" Type="Self.product_to_option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="options">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_option">
+              <PropertyRef Name="option_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_image_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_image" Type="Self.product_image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_image">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_category_products1">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_to_category" Type="Self.product_to_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_category">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_complect_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_to_complect" Type="Self.product_to_complect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_complect">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_to_option_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1" />
+          <End Role="product_to_option" Type="Self.product_to_option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_to_option">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AvtoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="attributes" EntityType="Self.attributes" />
+          <EntitySet Name="category_1lvl" EntityType="Self.category_1lvl" />
+          <EntitySet Name="category_2lvl" EntityType="Self.category_2lvl" />
+          <EntitySet Name="category_3lvl" EntityType="Self.category_3lvl" />
+          <EntitySet Name="complects" EntityType="Self.complects" />
+          <EntitySet Name="options" EntityType="Self.options" />
+          <EntitySet Name="product_image" EntityType="Self.product_image" />
+          <EntitySet Name="product_to_category" EntityType="Self.product_to_category" />
+          <EntitySet Name="product_to_complect" EntityType="Self.product_to_complect" />
+          <EntitySet Name="product_to_option" EntityType="Self.product_to_option" />
+          <EntitySet Name="products" EntityType="Self.products" />
+          <AssociationSet Name="FK_category_2lvl_category_1lvl" Association="Self.FK_category_2lvl_category_1lvl">
+            <End Role="category_1lvl" EntitySet="category_1lvl" />
+            <End Role="category_2lvl" EntitySet="category_2lvl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_3lvl_category_2lvl" Association="Self.FK_category_3lvl_category_2lvl">
+            <End Role="category_2lvl" EntitySet="category_2lvl" />
+            <End Role="category_3lvl" EntitySet="category_3lvl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_category_category_3lvl" Association="Self.FK_product_to_category_category_3lvl">
+            <End Role="category_3lvl" EntitySet="category_3lvl" />
+            <End Role="product_to_category" EntitySet="product_to_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_complect_complects" Association="Self.FK_product_to_complect_complects">
+            <End Role="complects" EntitySet="complects" />
+            <End Role="product_to_complect" EntitySet="product_to_complect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_option_options" Association="Self.FK_product_to_option_options">
+            <End Role="options" EntitySet="options" />
+            <End Role="product_to_option" EntitySet="product_to_option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_image_products" Association="Self.FK_product_image_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_image" EntitySet="product_image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_category_products1" Association="Self.FK_product_to_category_products1">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_to_category" EntitySet="product_to_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_complect_products" Association="Self.FK_product_to_complect_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_to_complect" EntitySet="product_to_complect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_to_option_products" Association="Self.FK_product_to_option_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="product_to_option" EntitySet="product_to_option" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AvtoModelContainer" CdmEntityContainer="AvtoEntities">
+          <EntitySetMapping Name="attributes">
+            <EntityTypeMapping TypeName="AvtoModel.attributes">
+              <MappingFragment StoreEntitySet="attributes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_1lvl">
+            <EntityTypeMapping TypeName="AvtoModel.category_1lvl">
+              <MappingFragment StoreEntitySet="category_1lvl">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_2lvl">
+            <EntityTypeMapping TypeName="AvtoModel.category_2lvl">
+              <MappingFragment StoreEntitySet="category_2lvl">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_3lvl">
+            <EntityTypeMapping TypeName="AvtoModel.category_3lvl">
+              <MappingFragment StoreEntitySet="category_3lvl">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="complects">
+            <EntityTypeMapping TypeName="AvtoModel.complects">
+              <MappingFragment StoreEntitySet="complects">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="options">
+            <EntityTypeMapping TypeName="AvtoModel.options">
+              <MappingFragment StoreEntitySet="options">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_image">
+            <EntityTypeMapping TypeName="AvtoModel.product_image">
+              <MappingFragment StoreEntitySet="product_image">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_to_category">
+            <EntityTypeMapping TypeName="AvtoModel.product_to_category">
+              <MappingFragment StoreEntitySet="product_to_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_to_complect">
+            <EntityTypeMapping TypeName="AvtoModel.product_to_complect">
+              <MappingFragment StoreEntitySet="product_to_complect">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="complect_id" ColumnName="complect_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_to_option">
+            <EntityTypeMapping TypeName="AvtoModel.product_to_option">
+              <MappingFragment StoreEntitySet="product_to_option">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="option_id" ColumnName="option_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="AvtoModel.products">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="attributes_rus" ColumnName="attributes_rus" />
+                <ScalarProperty Name="attributes_eng" ColumnName="attributes_eng" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="description_rus" ColumnName="description_rus" />
+                <ScalarProperty Name="description_eng" ColumnName="description_eng" />
+                <ScalarProperty Name="name_rus" ColumnName="name_rus" />
+                <ScalarProperty Name="name_eng" ColumnName="name_eng" />
+                <ScalarProperty Name="complect_group_id" ColumnName="complect_group_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

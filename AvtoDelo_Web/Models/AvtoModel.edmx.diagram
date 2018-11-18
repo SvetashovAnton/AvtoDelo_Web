@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f2a5e84fa0a4513a6eb008e9c5a1947" Name="Diagram1">
+        <EntityTypeShape EntityType="AvtoModel.attributes" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.category_1lvl" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.category_2lvl" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.category_3lvl" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.complects" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.options" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.product_image" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.product_to_category" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.product_to_complect" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.product_to_option" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AvtoModel.products" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="AvtoModel.FK_category_2lvl_category_1lvl" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_category_3lvl_category_2lvl" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_to_category_category_3lvl" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_to_complect_complects" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_to_option_options" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_image_products" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_to_category_products1" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_to_complect_products" ManuallyRouted="false" />
+        <AssociationConnector Association="AvtoModel.FK_product_to_option_products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
