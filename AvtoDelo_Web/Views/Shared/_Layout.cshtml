@@ -1,43 +1,386 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Exporso - Bike/Car/Auto Parts, Accessories Store eCommerce Bootstrap 4 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugin.css">
+    <link rel="stylesheet" href="/assets/css/bundle.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/slick-theme.css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="copyright">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright_inner text-center">
+                        <div id="language" class="">
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img width="16" height="11" src="https://avto-instrument.ru/image/flags/ru.png" alt="Русский">
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <img width="16" height="11" src="https://avto-instrument.ru/image/flags/ru.png" alt="Русский">
+                                        <img width="16" height="11" src="https://avto-instrument.ru/image/flags/gb.png" alt="Русский">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <header>
+        <div class="header_middle">
+            <div style="margin-bottom:10px" class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="logo ">
+                            <a href="index.html"><img src="/assets/img/logo/logo-2.png" alt="exporso logo"></a>
+                            <div class="newstyle">Надежность в деле уверенность в результате</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-8">
+                        <div class="category_search">
+                            <form action="#">
+                                <div class="category_search_inner">
+                                    <div class="select">
+                                        <select name="categroy_search">
+                                            <option value="1" selected>All Categories</option>
+                                            <option value="2">Latest Bikes</option>
+                                            <option value="3">Upcoming Bike</option>
+                                            <option value="4">popular Bike</option>
+                                            <option value="5">Best Selling Bike</option>
+                                        </select>
+                                    </div>
+                                    <div class="search">
+                                        <input type="text" placeholder="Search Keyword Here">
+                                    </div>
+                                    <div class="submit">
+                                        <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <div class="menu d-none d-lg-block ">
+                                <nav>
+                                    <ul>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Dropdown
+                                            </a>
+                                            <ul class="sub_menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li class="dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="http://google.com">Google</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Submenu</a></li>
+                                                        <li><a class="dropdown-item" href="#">Submenu0</a></li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
+                                                                <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
+                                                                <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        @*<li>
+            <a href="index.html" style="color: #ff6400">КАТЕГОРИИ <i class="zmdi zmdi-chevron-down"></i> </a>
+            <ul class="sub_menu">
+                <li><a href="index.html"><img style="width:35px; margin-right: 5px" src="~/assets/img/product/home2/chapt3-50x50.png"/>Категоря 1</a></li>
+                <li><a href="index-2.html">Категория 2</a></li>
+            </ul>
+        </li>*@
+                                        <li><a href="about-us.html" style="color: #ff6400">СЕРИИ</a></li>
+                                        <li>
+                                            <a href="shop.html">О КОМПАНИИ <i class="zmdi zmdi-chevron-down"></i></a>
+                                            <ul class="sub_menu">
+                                                <li><a href="shop.html">Shop </a></li>
+                                                <li><a href="shop-list-right-sidebar.html">shop Right Sidebar</a></li>
+                                                <li><a href="shop-without-sidebar.html">shop without Sidebar</a></li>
+                                                <li><a href="product-details.html">Product Details </a></li>
+                                                <li><a href="product-details-sidebar.html">Product Details Sidebar </a></li>
+                                                <li><a href="checkout.html">Checkout </a></li>
+                                                <li><a href="cart.html">Cart</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a href="my-account.html">My Account</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="blog.html">КАТАЛОГ <i class="zmdi zmdi-chevron-down"></i></a>
+                                            <ul class="sub_menu">
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact-us.html">ПАРТНЕРЫ </a></li>
+                                        <li class="mega_item">
+                                            <a href="#">ПОЛЕЗНАЯ ИНФОРМАЦИЯ <i class="zmdi zmdi-chevron-down"></i></a>
+                                            <ul class="mega_menu">
+                                                <li>
+                                                    <a href="#">Column1</a>
+                                                    <ul class="mega_dropdown">
+                                                        <li><a href="shop.html">Shop </a></li>
+                                                        <li><a href="shop-list.html">Shop List</a></li>
+                                                        <li><a href="shop-right-sidebar.html">Shop Right Sidebar </a></li>
+                                                        <li><a href="shop-without-sidebar.html">Shop without Sidebar </a></li>
+                                                        <li><a href="shop-list-without-sidebar.html">Shop List without Sidebar </a></li>
+                                                        <li><a href="product-details.html">Product Details</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Column2</a>
+                                                    <ul class="mega_dropdown">
+                                                        <li><a href="product-details-sidebar.html">product Details Sidebar</a></li>
+                                                        <li><a href="cart.html">Cart</a></li>
+                                                        <li><a href="checkout.html">Checkout</a></li>
+                                                        <li><a href="wishlist.html">wishlist</a></li>
+                                                        <li><a href="my-account.html">My account</a></li>
+                                                        <li><a href="login.html">login</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Column3</a>
+                                                    <ul class="mega_dropdown">
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+                                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                                        <li><a href="about-us.html">About Us </a></li>
+                                                        <li><a href="contact-us.html">Contact Us </a></li>
+                                                        <li><a href="404.html">404</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-lg-none">
+                            <!--Mobile menu murkup start-->
+                            <div class="mobile-menu-area d-lg-none">
+                                <div class="mobile-menu clearfix">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="index.html">HOME </a>
+                                                <ul>
+                                                    <li><a href="index.html">Home 1</a></li>
+                                                    <li><a href="index-2.html">Home 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="about-us.html">About</a></li>
+                                            <li>
+                                                <a href="shop.html">Shop</a>
+                                                <ul>
+                                                    <li><a href="shop.html">Shop </a></li>
+                                                    <li><a href="shop-list-right-sidebar.html">shop Right Sidebar</a></li>
+                                                    <li><a href="shop-without-sidebar.html">shop without Sidebar</a></li>
+                                                    <li><a href="product-details.html">Product Details </a></li>
+                                                    <li><a href="product-details-sidebar.html">Product Details Sidebar </a></li>
+                                                    <li><a href="checkout.html">Checkout </a></li>
+                                                    <li><a href="cart.html">Cart</a></li>
+                                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                                    <li><a href="my-account.html">My Account</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="blog.html">Blog</a>
+                                                <ul>
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+                                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact-us.html">CONTACT </a></li>
+                                            <li>
+                                                <a href="#">Features</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Column1</a>
+                                                        <ul>
+                                                            <li><a href="shop.html">Shop </a></li>
+                                                            <li><a href="shop-list.html">Shop List</a></li>
+                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar </a></li>
+                                                            <li><a href="shop-without-sidebar.html">Shop without Sidebar </a></li>
+                                                            <li><a href="shop-list-without-sidebar.html">Shop List without Sidebar </a></li>
+                                                            <li><a href="product-details.html">Product Details</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Column2</a>
+                                                        <ul>
+                                                            <li><a href="product-details-sidebar.html">product Details Sidebar</a></li>
+                                                            <li><a href="cart.html">Cart</a></li>
+                                                            <li><a href="checkout.html">Checkout</a></li>
+                                                            <li><a href="wishlist.html">wishlist</a></li>
+                                                            <li><a href="my-account.html">My account</a></li>
+                                                            <li><a href="login.html">login</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Column3</a>
+                                                        <ul>
+                                                            <li><a href="blog.html">Blog</a></li>
+                                                            <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+                                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                                            <li><a href="about-us.html">About Us </a></li>
+                                                            <li><a href="contact-us.html">Contact Us </a></li>
+                                                            <li><a href="404.html">404</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!--Mobile menu murkup End-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </header>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </div>
+    <footer class="footer_area">
+        <div class="footer_bottom ptb-80">
+            <center>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <center class="single_footer widget_description">
+
+
+                            <center class="social__icon">
+                                <ul style="width:100px">
+                                    <li>
+                                        <a class="facebook" href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="google-plus" href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter" href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="linkedin" href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </center>
+                        </center>
+                    </div>
+
+
+
+                </div>
+            </center>
+        </div>
+
+    </footer>
+    <script src="/assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/slick.min.js"></script>
+
+
+    
+
+    <script type="text/javascript">
+        $('.sub_menu a.dropdown-toggle').on('click', function (e) {
+            if (!$(this).next().hasClass('show')) {
+                $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+            }
+            var $subMenu = $(this).next(".dropdown-menu");
+            $subMenu.toggleClass('show');
+
+
+            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                $('.dropdown-submenu .show').removeClass("show");
+            });
+
+
+            return false;
+        });
+        $('.autoplay').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+
+    </script>
 </body>
 </html>
