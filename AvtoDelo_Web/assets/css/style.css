@@ -42,6 +42,47 @@
 -----------------------------------------------------------------------------------*/
 
 /*====== 2. Header css here ======*/
+.menu li:hover > ul.dropdown-menu {
+    display: block;
+}
+.menu ul li ul.dropdown-menu {
+    font-size: 14px;
+    background: #fff;
+    min-width: 180px;
+    -webkit-box-shadow: 0 0 15px 0.08px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px 0.08px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+.menu ul li ul.dropdown-menu li a:hover {
+    color: #fa0f07;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: transparent; 
+}
+.menu ul li ul.dropdown-menu li a {
+    color: #191919;
+    display: block;
+    font-weight: 400;
+    padding: 5px 0;
+    text-transform: capitalize;
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+    }
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+} 
 
 .navbar-nav li:hover > ul.dropdown-menu {
     display: block;
@@ -378,6 +419,11 @@ padding:0;
 	margin-left: 5px;
 }
 .menu ul li:hover ul.sub_menu{
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+ul.sub_menu li.dropdown-submenu:hover ul.sub_menu {
     top: 100%;
     opacity: 1;
     visibility: visible;
