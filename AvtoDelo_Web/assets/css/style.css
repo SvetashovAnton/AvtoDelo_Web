@@ -42,13 +42,56 @@
 -----------------------------------------------------------------------------------*/
 
 /*====== 2. Header css here ======*/
+
+.borderbotleft {
+    border-bottom-color: grey;
+    border-bottom-left-radius: 14px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-color: grey;
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-right-color: grey;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-top-color: grey;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.bordertop {
+    background-color: white;
+    border-bottom-color: #f60;
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 0px;
+    border-bottom-style: dotted;
+    border-bottom-width: 2px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-right-color: #f60;
+    border-right-style: dotted;
+    border-right-width: 2px;
+
+}
 .menu li:hover > ul.dropdown-menu {
     display: block;
+}
+
+.footerback {
+    background-image: url("../img/back2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 .menu ul li ul.dropdown-menu {
     font-size: 14px;
     background: #fff;
-    min-width: 180px;
+    min-width: 250px;
     -webkit-box-shadow: 0 0 15px 0.08px rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 15px 0.08px rgba(0, 0, 0, 0.15);
     padding: 15px 20px;
@@ -981,7 +1024,7 @@ ul.sub_menu li.dropdown-submenu:hover ul.sub_menu {
 }
 /*--- 11. Footer css here ------*/
 footer.footer_area {
-    background: #151320 none repeat scroll 0 0;
+    background: black;
 }
 .copyright {
     background: black none repeat scroll 0 0;

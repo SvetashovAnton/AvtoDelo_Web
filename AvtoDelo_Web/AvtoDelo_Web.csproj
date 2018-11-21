@@ -274,6 +274,8 @@
     <Content Include="assets\img\product\home2\7.png" />
     <Content Include="assets\img\product\home2\8.png" />
     <Content Include="assets\img\product\home2\9.png" />
+    <Content Include="assets\img\product\home2\automotive-tool.jpg" />
+    <Content Include="assets\img\product\home2\black-steel.jpg" />
     <Content Include="assets\img\product\home2\chapt3-50x50.png" />
     <Content Include="assets\img\product\home2\prod_sm_1.png" />
     <Content Include="assets\img\product\home2\prod_sm_2.png" />
@@ -281,6 +283,7 @@
     <Content Include="assets\img\product\home2\prod_sm_4.png" />
     <Content Include="assets\img\product\home2\prod_sm_5.png" />
     <Content Include="assets\img\product\home2\prod_sm_6.png" />
+    <Content Include="assets\img\product\home2\professional.jpg" />
     <Content Include="assets\img\product\pro_details\big-2.jpg" />
     <Content Include="assets\img\product\pro_details\big-3.jpg" />
     <Content Include="assets\img\product\pro_details\big-4.jpg" />
@@ -314,6 +317,8 @@
     <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\journal.css" />
+    <Content Include="Content\picker.classic.min.css" />
     <Content Include="Content\slick-theme.css" />
     <Content Include="Content\slick.css" />
     <Content Include="favicon.ico" />
@@ -354,8 +359,13 @@
     <Content Include="assets\fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="assets\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="assets\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Scripts\form_builder.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\picker.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\slick.js" />
@@ -389,6 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Views\Home\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
